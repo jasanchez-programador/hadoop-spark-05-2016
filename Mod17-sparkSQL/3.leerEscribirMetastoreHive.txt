@@ -1,0 +1,7 @@
+# leer tabla del metastore y almacenarlo en un DF
+df_t1 = sqlContext.read.table('t1')
+
+# guardar tabla en METASTORE formato parquet
+# con el resto de formatos hay problemas
+df_t1.write.saveAsTable('t1_spark')
+

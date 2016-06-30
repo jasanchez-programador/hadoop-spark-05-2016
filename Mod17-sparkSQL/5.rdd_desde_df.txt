@@ -1,0 +1,6 @@
+# creamos DF leyendo tabla t1 del metastore
+df_t1 = sqlContext.read.table('t1')
+
+# creamos RDD del DF separando las columnas por ,
+rdd_t1 = df_t1.map(lambda row: (str(row.id) + "," + row.name))
+

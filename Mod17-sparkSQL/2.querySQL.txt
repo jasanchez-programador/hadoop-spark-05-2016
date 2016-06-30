@@ -1,0 +1,16 @@
+1. Lanzar SQL SIN acceso al METASTORE
+--------------------------------------
+# crear DF leyendo de HDFS
+df_t1 = sqlContext.read.parquet("/user/hive/warehouse/t1_parquet");
+# SOBRE DF ----> dar nombre a la tabla!!!
+df_t1.registerTempTable('tabla1_parquet')
+# SOBRE Contexto Sql --> usar funcion sql
+sqlContext.sql(""" select * from tabla1_parquet """).show()
+
+2. Lanzar SQL CON acceso al METASTORE
+--------------------------------------
+# uso directo de la funcion sql del Conteto Sql
+# porque miramos las tablas y su localizacion del METASTORE
+sqlContext.sql(""" select * from t1_parquet """).show()
+
+
